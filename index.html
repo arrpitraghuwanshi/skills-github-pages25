@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For My Moti ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            overflow: hidden;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 100px;
+            font-size: 40px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #yesBtn {
+            background-color: white;
+            color: #ff4b7d;
+            font-weight: bold;
+        }
+
+        #noBtn {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💌 Will you be my Valentine Moti? 💖</h1>
+
+    <button id="yesBtn">Yes 💘</button>
+    <button id="noBtn" disabled style="left: 55%; top: 60%;">No 😢</button>
+
+    <script>
+        const yesBtn = document.getElementById("yesBtn");
+
+        yesBtn.style.left = "40%";
+        yesBtn.style.top = "60%";
+
+        // Moving Yes Button
+        yesBtn.addEventListener("mouseover", function() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            yesBtn.style.left = x + "px";
+            yesBtn.style.top = y + "px";
+        });
+
+        // Click Success
+        yesBtn.addEventListener("click", function() {
+            document.body.innerHTML = "<h1>Yayyyyy ❤️🥰 I Love You Moti 💕</h1>";
+        });
+
+        // Create Floating Hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
